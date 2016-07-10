@@ -8,16 +8,11 @@ var bodyParser = require('body-parser');
 app.use(bodyParser.json());
 
 app.use(express.static('../client'));
-
-app.get('/*', function (req, res) {
- res.sendFile(path.resolve(__dirname, '../client/index.html'));
-});
-
 var menu = require('../server/lunch.js');
 var users = require('../server/users.js');
 
 app.get('/users', function(req, res){
-    res.send(users);
+    res.send(users.map(function(elem){return elem.name}));
 });
 
 
@@ -26,7 +21,7 @@ app.get('/menu', function(req, res){
 });
 
 app.post('/order', function(req, res){
-    var user = req.data.user;
+    var user = req.body.user;
     var flag = true;
     for (var i = 0; i < users.length; i++){
         if(users[i].name === user) {
@@ -37,10 +32,15 @@ app.post('/order', function(req, res){
     if (flag){
         users.push({id: users.length, name: user});
     }
-    res.send({time: Math.random()});
+    res.send({number: Math.random(), order: req.body});
 });
 
-app.listen(3000, function () {
- console.log('Example app listening on port 3000!');
- console.log(users);
+app.get('/*', function (req, res) {
+ res.sendFile(path.resolve(__dirname, '../client/index1.html'));
+});
+
+
+
+app.listen(3001, function () {
+ console.log('Example app listening on port 3001!');
 });

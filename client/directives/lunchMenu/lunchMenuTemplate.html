@@ -1,0 +1,19 @@
+<div class="panel panel-default">
+    <div class="panel-heading">Меню {{number + 1}}</div>
+    <div class="panel-body">
+        <ul class="list-group">
+            <li class="list-group-item" ng-repeat="dish in lunch.food track by $index">
+                <span class="badge pull-right">{{dish.price}}</span>
+                {{dish.name}}
+            </li>
+
+            <li class="list-group-item list-group-item-info">
+                <span class="badge pull-right">{{totalPrice}}</span>
+                Итого
+            </li>
+        </ul>
+    </div>
+    <div class="panel-footer">
+        <button type="button" class="btn btn-primary" ng-click="onClick()">Выбрать</button>
+    </div>
+</div>
