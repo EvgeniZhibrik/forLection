@@ -1,4 +1,4 @@
-[
+var menu = [
 	{
 		"name":"Меню 1",
 		"food":[
@@ -62,4 +62,6 @@
 			}
 		]
 	}
-]
+];
+
+module.exports = menu;

@@ -1,4 +1,4 @@
-[
+var users = [
 {
 	"id":1,
 	"name":"user 1"
@@ -84,4 +84,6 @@
 	"name":"user 20"
 }
 
-]
+];
+
+module.exports = users;
