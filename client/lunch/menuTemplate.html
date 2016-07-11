@@ -1,0 +1,4 @@
+<h3>Меню на этой неделе</h3>
+<div ng-repeat="lunch in menu track by $index">
+    <lunch-menu lunch="lunch" on-click="chooseMenu(lunch)" total-price="getTotalPrice(lunch)"></lunch-menu>
+</div>

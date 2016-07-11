@@ -1,11 +1,11 @@
 (function(){
-    function lunchController($scope, $q, lunchService){
+    function lunchController($scope, $q, lunchService, $location){
 
         function init () {
             $scope.menu = [];
             $scope.users = [];
-            $scope.chosenMenu = null;
-            $scope.chosenUser = '';
+            $scope.chosenMenu = lunchService.chosenMenu;
+            $scope.chosenUser = lunchService.chosenUser;
             var promises = {
                 menu: lunchService.getMenus(),
                 users: lunchService.getUsers()
@@ -22,16 +22,17 @@
         init();
         
         $scope.chooseMenu = function (lunch){
-            $scope.chosenMenu = {
+            $scope.chosenMenu = lunchService.chosenMenu = {
                 name: lunch.name,
                 price: $scope.getTotalPrice(lunch)
             };
+            $location.path('/userlist')
         };
         
         $scope.getTotalPrice = lunchService.getTotalPrice;
         
         $scope.chooseUser = function(userName){
-            $scope.chosenUser = userName;
+            $scope.chosenUser = lunchService.chosenUser = userName;
         }
         
         $scope.makeOrder = function(lunch, user){
@@ -46,5 +47,5 @@
 
 
 
-    angular.module('lunch').controller('lunchController', ['$scope', '$q', 'lunchService', lunchController]);
+    angular.module('lunch').controller('lunchController', ['$scope', '$q', 'lunchService', '$location', lunchController]);
 })();

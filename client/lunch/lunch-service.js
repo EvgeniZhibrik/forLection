@@ -1,6 +1,9 @@
 (function(){
     function lunchService ($http){
-
+        
+        this.chosenMenu = null;
+        this.chosenUser = '';
+        
         this.getTotalPrice = function (lunch) {
             return lunch.food.reduce(function (prev, cur){
                 return prev + cur.price;

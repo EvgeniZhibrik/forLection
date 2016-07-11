@@ -13,34 +13,8 @@
         </div>
         <div class="container">
             <div class="row">
-                <div class="col-sm-6">
-                    <h3>Меню на этой неделе</h3>
-                    <div ng-repeat="lunch in menu track by $index">
-                        <lunch-menu lunch="lunch" on-click="chooseMenu(lunch)" total-price="getTotalPrice(lunch)"></lunch-menu>
-                    </div>
-                   
-                </div>
-                <div class="col-sm-6">
-                    <form novalidate autocomplete="off" role="form" ng-submit="makeOrder(chosenMenu, chosenUser)">
-                        <h3>Выбранное меню</h3>
-                        <div class="well">
-                            <span class="badge pull-right">{{chosenMenu.price}}</span>
-                            {{chosenMenu.name}}
-                        </div>
-
-                        <div class="form-group">
-                            <label for="username">Пользователь</label>
-                            <input type="text" class="form-control" id="username" placeholder="Имя" ng-model="chosenUser">
-                        </div>
-                        
-                        <ul class="list-group">
-                            <li>
-                              <a class="list-group-item" ng-repeat="item in users | filter:chosenUser track by $index" ng-click="chooseUser(item)">{{item}}</a>
-                            </li>
-                        </ul>
-
-                        <button type="submit" class="btn btn-default btn-lg" ng-disabled="!chosenMenu || !chosenUser">Сделать заказ</button>
-                    </form>
+                <div class="col-sm-6" ng-view>
+                    
                 </div>
             </div>
         </div>
@@ -48,6 +22,7 @@
     <script src="bower_components/jquery/dist/jquery.js"></script>
     <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
     <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-route/angular-route.js"></script>
     <script src="app.js"></script>
     <script src="directives/directives.js"></script>
     <script src="directives/lunchMenu/lunchMenu-directive.js"></script>
