@@ -4,7 +4,7 @@
         function init () {
             $scope.menu = [];
             $scope.users = [];
-            $scope.chosenMenu = {};
+            $scope.chosenMenu = null;
             $scope.chosenUser = '';
             var promises = {
                 menu: lunchService.getMenus(),
