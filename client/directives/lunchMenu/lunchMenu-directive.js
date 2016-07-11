@@ -3,7 +3,6 @@ angular.module('directives').directive('lunchMenu', function(){
         restrict: 'E',
         scope: {
             lunch: '=',
-            number: '=',
             onClick: '&',
             totalPrice: '='
         },

@@ -1,5 +1,5 @@
 (function(){
-    function lunchController($scope, lunchService, $q){
+    function lunchController($scope, $q, lunchService){
 
         function init () {
             $scope.menu = [];
@@ -46,5 +46,5 @@
 
 
 
-    angular.module('lunch').controller('lunchController', ['$scope', 'lunchService', '$q', lunchController]);
+    angular.module('lunch').controller('lunchController', ['$scope', '$q', 'lunchService', lunchController]);
 })();
